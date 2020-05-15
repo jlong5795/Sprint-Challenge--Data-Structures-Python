@@ -40,3 +40,18 @@ class LinkedList:
 
     def reverse_list(self, node, prev):
         pass
+        # if the list is empty
+        if not node:
+            return None
+        # if there is another node after this one
+        if node.next_node is not None:
+            # hold the next node to reposition later
+            new_node = node.next_node
+            # move the previous node into the next node spot
+            node.next_node = prev
+            self.reverse_list(new_node, node)
+        # this is the end. swap with previous node and done
+        else:
+            self.head = node
+            node.next_node = prev
+
